@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>weather forcast</title>
+    <style>
+    *{
+        background: rgb(153, 130, 130);
+    }
+    #box{
+        margin:07% 43%;
+        border: 2px solid red;
+        
+    }
+       
+    #weathericon img{
+        width: 100%;
+        margin: auto auto;
+    }
+    
+    #info{
+        margin: 0px 30px;
+    }
+    
+    #location{
+        font-size: 20px;
+    }
+    #date{
+        font-size: 23px;
+    }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="weathericon">
+            <img src="modern-weather-icon-of-sun-flat-symbol-on-white-vector-23926736.jpg" alt="  ">
+
+        </div>
+        <div id="info">
+            <h1 id="temp">22.22 </h1>
+            <p id="location">pune , IND</p>
+            <p id="date">wed | nov01 | 11pm  </p>
+        </div>
+
+    </div>
+    <script>
+        const scriptDate=document.getElementById("date")
+        const currentDate = () =>{
+        let day=new Date();
+
+        // console.log(day.getDay());
+        var weakday= new Array(7);
+        weakday[0]="sun";
+        weakday[1]="mon";
+        weakday[2]="tue";
+        weakday[3]="wed";
+        weakday[4]="fri";
+        weakday[5]="thu";
+        weakday[6]="fri";
+        var week=weakday[day.getDay()];
+
+        var month =['jan','feb','mar','apr','may','jun', 'july','aug','sep','nov','dec'];
+        var month=day.getMonth()+1;
+
+        var date=day.getDate();
+
+        var time=day.getHours();
+
+        var min=day.getMinutes();
+        
+        let periods="AM";
+        if(time>11){
+            periods="PM";
+            if(time>12){
+                time-=12;
+            }
+        }
+        if(min<10){
+            "0"+min;
+        }
+
+
+        return `${week} | ${month}/${date} | ${time}:${min}${periods}`;
+        
+        };
+        scriptDate.innerHTML = currentDate();
+     </script>
+</body>
+</html>
